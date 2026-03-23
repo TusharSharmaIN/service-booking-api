@@ -9,7 +9,7 @@ const createBookingSchema = z.object({
   notes: z.string().optional(),
 });
 
-export const createBooking = async (req: AuthRequest, res: Response) => {
+export const createBooking = async (req: AuthRequest & { body: any }, res: Response) => {
   const parsed = createBookingSchema.safeParse(req.body);
 
   if (!parsed.success) {
